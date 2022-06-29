@@ -1,7 +1,7 @@
 {
   "name": "samhk222/active-housing-reqres",
   "description": "A supper dupper package to fetch data from reqres",
-  "type": "project",
+  "type": "library",
   "autoload": {
     "psr-4": {
       "Samhk222\\ActiveHousingReqres\\": "src/"
