@@ -15,10 +15,16 @@
   ],
   "minimum-stability": "dev",
   "require-dev": {
-    "larapack/dd": "dev-master"
+    "larapack/dd": "dev-master",
+    "phpunit/phpunit": "^9.5"
   },
   "require": {
     "guzzlehttp/guzzle": "7.4.x-dev",
     "ext-json": "*"
+  },
+  "scripts": {
+    "test": [
+      "phpunit"
+    ]
   }
 }

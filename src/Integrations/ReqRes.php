@@ -6,6 +6,8 @@ namespace Samhk222\ActiveHousingReqres\Integrations;
 
 use Exception;
 
+use function PHPUnit\Framework\throwException;
+
 class ReqRes extends BaseClass
 {
     /**
@@ -30,22 +32,8 @@ class ReqRes extends BaseClass
         try {
             $this->resource = $this->client->request('GET', 'users/' . $id);
         } catch (\GuzzleHttp\Exception\RequestException $e) {
-            if ($e->hasResponse()) {
-                $response = $e->getResponse();
-                if (404 === $response->getStatusCode()) {
-                    die(\json_encode(['error' => "User not found"]));
-                }
-            } else {
-                $response = $e->getHandlerContext();
-                if (isset($response['error'])) {
-                    dd($response['error']);
-                } else {
-                    dd('Unknown error occured!');
-                }
-            }
+            $this->user_not_found = true;
         }
-
-
         return $this;
     }
 
@@ -55,8 +43,11 @@ class ReqRes extends BaseClass
      */
     public function users(int $page)
     {
-        $this->resource = $this->client->request('GET', 'users?page=' . $page);
-
+        try {
+            $this->resource = $this->client->request('GET', 'users?page=' . $page);
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
+            $this->user_not_found = true;
+        }
         return $this;
     }
 }
