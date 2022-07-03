@@ -1,6 +1,7 @@
 # Active Housing - Interview Task 2022
 
-This is the task requested by Active Housing, which consists of creating a package that:
+This is the task requested by Active Housing, [to full fill the following test](./.docs/interview1.pdf), which consists
+of creating a package that:
 
 - Retrieve a user by ID
 - Retrieves a list of users
